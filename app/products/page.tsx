@@ -491,28 +491,27 @@ export default function ProductsPage() {
             }
 
             const sortQuery =
-              sort ===
-              "price-asc"
-                ? "&sortBy=price&order=asc"
-                : sort ===
-                  "price-desc"
-                ? "&sortBy=price&order=desc"
-                : sort ===
-                  "rating-asc"
-                ? "&sortBy=rating&order=asc"
-                : sort ===
-                  "rating-desc"
-                ? "&sortBy=rating&order=desc"
-                : sort ===
-                  "title-asc"
-                ? "&sortBy=title&order=asc"
-                : sort ===
-                  "title-desc"
-                ? "&sortBy=title&order=desc"
-                : "";
+  sort === "price-asc"
+    ? "&sortBy=price&order=asc"
+    : sort === "price-desc"
+      ? "&sortBy=price&order=desc"
+      : sort === "rating-asc"
+        ? "&sortBy=rating&order=asc"
+        : sort === "rating-desc"
+          ? "&sortBy=rating&order=desc"
+          : sort === "title-asc"
+            ? "&sortBy=title&order=asc"
+            : sort === "title-desc"
+              ? "&sortBy=title&order=desc"
+              : "";
 
-            const finalUrl =
-              `${url}?limit=${pageSize}&skip=${skip}${sortQuery}`;
+const separator = url.includes("?") ? "&" : "?";
+
+
+
+const finalUrl =
+  `${url}${separator}limit=${pageSize}&skip=${skip}${sortQuery}`;
+             
 
             const response =
               await api.get(
