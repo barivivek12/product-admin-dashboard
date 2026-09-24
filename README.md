@@ -1,16 +1,12 @@
 # Product Admin Dashboard
 
-A responsive Product Admin Dashboard built using Next.js, React, TypeScript, Tailwind CSS, and Axios.
+A responsive Product Admin Dashboard built with **Next.js, React, TypeScript, Tailwind CSS, Axios, and DummyJSON API**.
 
-This project was developed as a frontend assignment to demonstrate authentication, product management, search, filtering, sorting, pagination, responsive UI, API integration, and error handling.
-
----
+The application provides authentication and product management features including search, filtering, sorting, pagination, product details, add, edit, and delete operations.
 
 ## Live Demo
 
-Coming soon...
-
----
+https://product-admin-dashboard-three-coral.vercel.app
 
 ## GitHub Repository
 
@@ -22,596 +18,380 @@ https://github.com/barivivek12/product-admin-dashboard
 
 ### Authentication
 
-- User login using DummyJSON authentication API
+- Login using DummyJSON authentication API
 - Demo login credentials
-- Authentication token stored in localStorage
-- Protected product dashboard
+- Invalid credential error handling
+- Authentication token stored in `localStorage`
+- Protected product management pages
 - Logout functionality
-- Login error handling
-- Prevents repeated login requests
+- Prevents repeated login submissions
 
-### Product Dashboard
+### Product Management
 
-- Display product image
-- Display product title
-- Display category
-- Display price
-- Display rating
-- Display stock
+- View all products
+- Product image
+- Product title
+- Category
+- Price
+- Rating
+- Stock
+- Product details page
+- Add product
 - Edit product
 - Delete product
-- Add new product
-- Product details page
+- Delete confirmation dialog
 
-### Search
+### Search, Filter & Sort
 
-- Search products by name
-- Uses DummyJSON search API
+- Product search
 - Debounced search
-- Search state stored in URL
-- Search resets pagination to page 1
-- Empty search result handling
-
-### Category Filter
-
-- Load available product categories
-- Filter products by category
-- Category state stored in URL
-
-### Sorting
-
-Products can be sorted by:
-
-- Default
-- Price: Low to High
-- Price: High to Low
-- Rating
-- Title
-
-Sorting state is stored in the URL.
+- Category filtering
+- Sort by:
+  - Price
+  - Rating
+  - Title
+- Search and filter state reflected in the URL
 
 ### Pagination
 
-The dashboard supports:
-
-- Previous button
-- Next button
+- Page-based pagination
+- Previous and Next buttons
 - Page numbers
-- Page size 10
-- Page size 20
-- Page size 50
-- Current result range
-- URL-based pagination
-- Invalid page value handling
-
-Example:
-
-    /products?page=1&pageSize=10
+- Page size options:
+  - 10
+  - 20
+  - 50
+- URL-based pagination state
 
 ### Responsive Design
 
-The dashboard is responsive for desktop and mobile devices.
-
-#### Desktop
-
-Products are displayed in a table containing:
-
-- Image
-- Title
-- Category
-- Price
-- Rating
-- Stock
-- Actions
-
-#### Mobile
-
-Products are displayed as responsive cards for better usability on smaller screens.
-
----
-
-## Product Details
-
-Each product has a dedicated details page.
-
-Route:
-
-    /products/[id]
-
-The product details page displays:
-
-- Product images
-- Product title
-- Description
-- Category
-- Price
-- Rating
-- Stock
-- Brand
-- Reviews
-
-If an invalid product ID is entered, the application displays a Product Not Found state.
-
----
-
-## Add Product
-
-New products can be added from:
-
-    /products/add
-
-The form contains:
-
-- Product title
-- Description
-- Category
-- Price
-- Stock
-
-### Validation
-
-The application validates:
-
-- Product title is required
-- Description is required
-- Category is required
-- Price must be valid
-- Stock must be valid
-- Negative values are rejected
-- Repeated Save clicks are prevented
-
-The added product is stored on the client side so that the change can be displayed in the application.
-
----
-
-## Edit Product
-
-Products can be edited from:
-
-    /products/edit/[id]
-
-The edit form allows the user to update product information.
-
-The form includes:
-
-- Product title
-- Description
-- Category
-- Price
-- Stock
-- Validation
-- Loading state
-- Save button protection
-
----
-
-## Delete Product
-
-Products can be deleted from the dashboard.
-
-Before deleting a product, the application asks for confirmation to prevent accidental deletion.
-
-The deleted product is removed from the application.
-
----
-
-## URL State Management
-
-The dashboard keeps important state in the URL.
-
-### Pagination
-
-    /products?page=1&pageSize=10
-
-### Search
-
-    /products?page=1&pageSize=10&search=phone
-
-### Category
-
-    /products?page=1&pageSize=10&category=beauty
-
-### Sorting
-
-    /products?page=1&pageSize=10&sort=price-asc
-
-### Combined Example
-
-    /products?page=1&pageSize=10&search=phone&category=beauty&sort=price-asc
-
-This makes the current dashboard state shareable and refresh-friendly.
-
----
-
-## API
-
-This project uses the DummyJSON API.
-
-### Authentication
-
-    POST /auth/login
-
-### Get Products
-
-    GET /products
-
-### Search Products
-
-    GET /products/search?q=
-
-### Get Categories
-
-    GET /products/categories
-
-### Get Products by Category
-
-    GET /products/category/:category
-
-### Get Product Details
-
-    GET /products/:id
-
-### Add Product
-
-    POST /products/add
-
-### Update Product
-
-    PUT /products/:id
-
-### Delete Product
-
-    DELETE /products/:id
-
----
-
-## Demo Login Credentials
-
-Use the following credentials to log in:
-
-    Username: emilys
-    Password: emilyspass
+- Desktop product table
+- Mobile product cards
+- Responsive search, filter, sorting, and pagination controls
+
+### Error & Loading Handling
+
+- Loading states
+- Empty states
+- API error handling
+- Retry functionality
+- Invalid product ID handling
+- Invalid URL parameter handling
 
 ---
 
 ## Tech Stack
 
-- Next.js
-- React
-- TypeScript
-- Tailwind CSS
-- Axios
-- DummyJSON API
-- Git
-- GitHub
-- Vercel
+- **Next.js**
+- **React**
+- **TypeScript**
+- **Tailwind CSS**
+- **Axios**
+- **DummyJSON API**
+- **Git**
+- **GitHub**
+- **Vercel**
 
 ---
 
-## Project Structure
+## Demo Credentials
+
+```text
+Username: emilys
+Password: emilyspass
+```
+## API Endpoints
+
+This project uses the DummyJSON API for authentication and product operations.
+
+Authentication
+POST /auth/login
+Products
+GET /products
+GET /products/search?q=
+GET /products/categories
+GET /products/category/{category}
+GET /products/{id}
+POST /products/add
+PUT /products/{id}
+DELETE /products/{id}
+Project Structure
+product-admin-dashboard/
+│
+├── app/
+│   ├── products/
+│   │   ├── [id]/
+│   │   │   └── page.tsx
+│   │   ├── add/
+│   │   │   └── page.tsx
+│   │   ├── edit/
+│   │   │   └── [id]/
+│   │   │       └── page.tsx
+│   │   └── page.tsx
+│   │
+│   ├── icon.svg
+│   ├── globals.css
+│   ├── layout.tsx
+│   └── page.tsx
+│
+├── lib/
+│   ├── axios.ts
+│   └── productApi.ts
+│
+├── public/
+│
+├── package.json
+├── package-lock.json
+├── tsconfig.json
+├── next.config.ts
+├── postcss.config.mjs
+├── eslint.config.mjs
+└── README.md
+Getting Started
+1. Clone the repository
+git clone https://github.com/barivivek12/product-admin-dashboard.git
+2. Navigate to the project
+cd product-admin-dashboard
+3. Install dependencies
+npm install
+4. Start the development server
+npm run dev
+5. Open the application
+http://localhost:3000
+Authentication
 
-    product-admin-dashboard/
-    │
-    ├── app/
-    │   ├── products/
-    │   │   ├── [id]/
-    │   │   │   └── page.tsx
-    │   │   │
-    │   │   ├── add/
-    │   │   │   └── page.tsx
-    │   │   │
-    │   │   ├── edit/
-    │   │   │   └── [id]/
-    │   │   │       └── page.tsx
-    │   │   │
-    │   │   └── page.tsx
-    │   │
-    │   ├── page.tsx
-    │   ├── layout.tsx
-    │   └── globals.css
-    │
-    ├── lib/
-    │   ├── axios.ts
-    │   └── productApi.ts
-    │
-    ├── public/
-    │
-    ├── .gitignore
-    ├── package.json
-    ├── package-lock.json
-    ├── next.config.ts
-    ├── postcss.config.mjs
-    ├── tsconfig.json
-    └── README.md
+The application uses the DummyJSON authentication API.
 
----
+After successful login:
 
-## Axios Configuration
+The application sends the username and password to the authentication endpoint.
+The returned authentication token is stored in localStorage.
+The token is attached to API requests through the shared Axios configuration.
+Product management pages require authentication.
+Users can log out from the dashboard.
+Search
 
-The project uses a shared Axios instance.
+The dashboard provides product search using the DummyJSON search endpoint.
 
-The Axios configuration handles:
+Search input uses debouncing to reduce unnecessary API requests while the user is typing.
 
-- DummyJSON base URL
-- JSON request headers
-- Authentication token
-- Centralized API error handling
+The application also handles fast typing so that older search results do not replace newer search results.
 
-The authentication token is automatically added to API requests when the user is logged in.
+Category Filtering
 
----
+Products can be filtered using the available product categories.
 
-## Loading States
+The dashboard retrieves categories from the DummyJSON API and provides them through a category dropdown.
 
-The application provides loading states while API requests are being processed.
+Sorting
 
-Examples include:
+Products can be sorted by:
 
-- Login loading
-- Product loading
-- Add Product saving
-- Edit Product saving
+Price
+Rating
+Title
 
-Repeated button clicks are prevented while requests are in progress.
+Sorting is handled through the dashboard controls and reflected in the application state.
 
----
+Pagination
 
-## Error Handling
+The product dashboard supports pagination using:
 
-The application handles:
+Page number
+Page size
+Previous button
+Next button
 
-- Invalid login credentials
-- API request failures
-- Invalid product IDs
-- Empty search results
-- Empty product results
-- Invalid URL parameters
-- Loading states
-- Retry actions
+Available page sizes:
 
-When an API request fails, an appropriate error state is displayed to the user.
+10
+20
+50
 
----
+Example URL:
 
-## Search Debouncing
+/products?page=2&pageSize=20
 
-The search input uses a debounce mechanism.
+The current pagination state is preserved in the URL.
 
-Instead of making an API request for every keystroke, the application waits until the user stops typing before performing the search.
+URL State
 
-This reduces unnecessary API requests and provides a better user experience.
+The dashboard keeps important state in the URL, including:
 
----
+Page
+Page size
+Search
+Category
+Sort
 
-## Search Request Handling
+Example:
 
-The application also handles fast search changes so that an older request does not incorrectly replace the latest search result.
+/products?page=1&pageSize=10&search=phone
 
-This is especially useful when API responses are delayed.
+This allows the current dashboard state to be preserved when navigating or refreshing the page.
 
----
+Product Details
 
-## DummyJSON Mutation Limitation
+Each product has a dedicated details page.
 
-DummyJSON simulates POST, PUT, and DELETE operations.
+The details page displays:
 
-These operations do not permanently modify the DummyJSON database.
+Product images
+Product title
+Description
+Price
+Rating
+Stock
+Category
+Product reviews
 
-Therefore, the application maintains the user-facing changes on the client side where required.
+Example:
 
-### Add
+/products/1
 
-A newly added product is stored locally and displayed in the application.
+Invalid product IDs are handled with a Product Not Found state.
 
-### Edit
+Add Product
 
-Edited product information is reflected in the application.
+Users can add a new product through the Add Product page.
 
-### Delete
+The form includes validation before submitting product data.
 
-Deleted products are removed from the application.
+Example route:
 
-This behavior is documented because the API itself does not provide permanent persistence for these mutations.
+/products/add
+Edit Product
 
----
+Existing products can be edited through the Edit Product page.
 
-## Category + Search Handling
+The application loads the selected product and allows the user to update its information.
 
-DummyJSON does not provide a single endpoint that directly combines search and category filtering.
+Example route:
 
-Therefore, the application handles this situation on the client side when both search and category filters are active.
+/products/edit/1
+Delete Product
 
----
+Products can be deleted from the dashboard.
 
-## Responsive UI
+Before deletion, the application displays a confirmation step to prevent accidental deletion.
 
-### Desktop Layout
+Axios Configuration
 
-The desktop dashboard uses a product table.
+The application uses a shared Axios instance for API communication.
 
-    Image | Title | Category | Price | Rating | Stock | Actions
+The shared configuration provides:
 
-### Mobile Layout
+Common API base URL
+JSON request headers
+Authentication token handling
+Centralized API error handling
+Responsive Design
+Desktop
 
-The mobile dashboard uses product cards.
+Products are displayed in a table containing:
 
-    Product Image
-    Product Title
-    Category
-    Price
-    Rating
-    Stock
+Image
+Title
+Category
+Price
+Rating
+Stock
+Actions
+Mobile
 
-    Edit | Delete
+Products are displayed as individual responsive cards.
 
-This prevents the desktop table from becoming difficult to use on small screens.
+The dashboard is designed to remain usable on smaller screens without requiring horizontal scrolling for the main product information.
 
----
+Error Handling
 
-## Getting Started
+The application handles common error scenarios including:
 
-### Prerequisites
+Invalid login credentials
+Failed API requests
+Loading states
+Empty search results
+Invalid product IDs
+Invalid URL parameters
+Retry actions
+Delete confirmation
+Repeated form submissions
+DummyJSON Limitation
 
-Make sure you have Node.js installed on your system.
+This project uses DummyJSON as a mock API.
 
-### Clone the Repository
+According to the API behavior, product creation, updating, and deletion are simulated operations and are not permanently persisted on the server.
 
-    git clone https://github.com/barivivek12/product-admin-dashboard.git
+The application therefore handles the UI state so that product changes can be reflected during the current application session.
 
-### Navigate to the Project
-
-    cd product-admin-dashboard
-
-### Install Dependencies
-
-    npm install
-
-### Start Development Server
-
-    npm run dev
-
-### Open in Browser
-
-    http://localhost:3000
-
----
-
-## Production Build
-
-To create a production build:
-
-    npm run build
-
-To start the production server:
-
-    npm start
-
----
-
-## Deployment
-
-The application will be deployed using Vercel.
-
-Live deployment link:
-
-    Coming soon...
-
-Once deployed, the live URL will be added here.
-
----
-
-## GitHub
-
-Repository:
-
-https://github.com/barivivek12/product-admin-dashboard
-
-The repository contains the complete source code and project documentation.
-
----
-
-## AI Usage
+AI Usage
 
 AI tools were used during development for:
 
-- Understanding implementation approaches
-- Debugging errors
-- Troubleshooting API integration
-- Improving code structure
-- Understanding React and Next.js concepts
-- Reviewing responsive UI behavior
+Understanding implementation approaches
+Debugging errors
+Understanding API integration
+Reviewing implementation ideas
+Improving responsive UI
+Troubleshooting development issues
 
-All AI-assisted code was reviewed, tested, and understood before being used in the project.
+AI-generated suggestions were reviewed, modified where required, and tested in the application.
 
----
+The implementation can be explained during a technical walkthrough.
 
-## Development Notes
+Testing Checklist
 
-This project focuses on:
+The application was tested for:
 
-- Clean React component structure
-- Responsive design
-- API integration
-- User experience
-- Error handling
-- URL state management
-- Client-side state management
-- Maintainable project organization
+ Successful login
+ Invalid login credentials
+ Protected routes
+ Logout
+ Product listing
+ Product search
+ Debounced search
+ Category filtering
+ Sorting
+ Pagination
+ Page size changes
+ Product details
+ Invalid product ID
+ Add product
+ Edit product
+ Delete product
+ Delete confirmation
+ Loading states
+ Error states
+ Retry functionality
+ Responsive mobile layout
+Deployment
 
----
+The application is deployed using Vercel.
 
-## What I Learned
+Production URL
 
-Through this project, I practiced:
+https://product-admin-dashboard-three-coral.vercel.app
 
-- Next.js App Router
-- React
-- TypeScript
-- Tailwind CSS
-- Axios
-- REST API integration
-- Authentication
-- CRUD operations
-- Product search
-- Debouncing
-- Category filtering
-- Sorting
-- Pagination
-- URL state management
-- Responsive UI development
-- Error handling
-- Git and GitHub
-- Deployment preparation
+The project is connected to the GitHub repository, allowing new commits pushed to the repository to trigger new deployments.
 
----
+Author
 
-## Author
-
-### Vivek Bari
+Vivek Bari
 
 B.Tech Computer Science Engineering
 
 GitHub:
-
 https://github.com/barivivek12
 
----
+Assignment
 
-## Assignment Summary
+This project was developed as a frontend Product Admin Dashboard assignment using:
 
-This project implements a Product Admin Dashboard with authentication and product management functionality using:
+Next.js
+React
+TypeScript
+Axios
+Tailwind CSS
+DummyJSON API
 
-- Next.js
-- React
-- Tailwind CSS
-- Axios
-- DummyJSON API
-
-The application includes responsive desktop and mobile layouts, product CRUD operations, search, filtering, sorting, pagination, URL state management, loading states, and error handling.
-
----
-
-## Status
-
-### Completed
-
-- [x] Login
-- [x] Authentication
-- [x] Product dashboard
-- [x] Product search
-- [x] Category filtering
-- [x] Sorting
-- [x] Pagination
-- [x] Responsive desktop table
-- [x] Responsive mobile cards
-- [x] Product details
-- [x] Add Product
-- [x] Edit Product
-- [x] Delete Product
-- [x] Loading states
-- [x] Error states
-- [x] Retry
-- [x] URL state
-- [x] GitHub repository
-- [ ] Vercel deployment
-- [ ] Live demo URL
+The project focuses on responsive UI development, API integration, authentication, product management, URL state management, pagination, search, filtering, sorting, error handling, and deployment.
